@@ -52,7 +52,7 @@ existing_data['Pernah mengalami preeklamsia ?'] = existing_data['Pernah mengalam
 
 
 # Load saved model
-forest = pickle.load(open('F:/Bismillah Skripsi/Dataset/preeklamsia_model.sav', 'rb'))
+forest = pickle.load(open('preeklamsia_model.sav', 'rb'))
 
 # Membuat data tahun, bulan dan puskesmas
 daftar_puskesmas = ['Ajung', 'Ambulu', 'Andongsari', 'Arjasa', 'Balung', 'Bangsalsari',
@@ -97,7 +97,7 @@ def preeklamsia_risk_level(input_data):
 
 
 # Navigasi sidebar
-st.markdown('<style>' + open('F:/Bismillah Skripsi/Dataset/style.css').read() + '<style>', 
+st.markdown('<style>' + open('style.css').read() + '<style>', 
             unsafe_allow_html=True) 
 
 with st.sidebar:
@@ -121,7 +121,7 @@ with st.sidebar:
                                                      'padding-left': '30px'}},
                              key="1")
 
-with open("F:/Bismillah Skripsi/Dataset/orbit.png", "rb") as img_file:
+with open("logo-project.png", "rb") as img_file:
     img_byte = img_file.read()
 
 # Mengubah byte menjadi base64 string
@@ -454,7 +454,7 @@ if tabs == 'Deteksi Dini':
     
 # Halaman database
 if tabs == 'Database':
-    with open('F:/Bismillah Skripsi/Dataset/config.yaml') as file:
+    with open('config.yaml') as file:
         config = yaml.load(file, Loader=SafeLoader)
 
     authenticator = stauth.Authenticate(
