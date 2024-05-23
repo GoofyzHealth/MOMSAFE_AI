@@ -15,7 +15,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 from streamlit_gsheets import GSheetsConnection
-import pickle
+import joblib
 from st_on_hover_tabs import on_hover_tabs
 import streamlit_authenticator as stauth
 import yaml
@@ -52,7 +52,7 @@ existing_data['Pernah mengalami preeklamsia ?'] = existing_data['Pernah mengalam
 
 
 # Load saved model
-forest = pickle.load(open('preeklamsia_model.sav', 'rb'))
+forest = joblib.load('preeklamsia_model.joblib')
 
 # Membuat data tahun, bulan dan puskesmas
 daftar_puskesmas = ['Ajung', 'Ambulu', 'Andongsari', 'Arjasa', 'Balung', 'Bangsalsari',
