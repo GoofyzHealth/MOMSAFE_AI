@@ -7,5 +7,5 @@ streamlit-on-hover-tabs==1.0.1
 datetime
 plotly==5.6.0
 st-gsheets-connection
-scikit-learn==1.0.2
+scikit-learn
 pip==23.3.1
