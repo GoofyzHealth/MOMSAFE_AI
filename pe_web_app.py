@@ -52,7 +52,7 @@ existing_data['Pernah mengalami preeklamsia ?'] = existing_data['Pernah mengalam
 
 
 # Load saved model
-forest = pickle.load(open('preeklamsia_model.sav'))
+forest = pickle.load(open('preeklamsia_model.sav', 'rb'))
 
 # Membuat data tahun, bulan dan puskesmas
 daftar_puskesmas = ['Ajung', 'Ambulu', 'Andongsari', 'Arjasa', 'Balung', 'Bangsalsari',
