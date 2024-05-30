@@ -106,17 +106,20 @@ def preeklamsia_risk_level(input_data):
     # Ubah data yang diinput menjadi array
     input_data_as_numpy_array = np.array(input_data)
 
-    input_data_reshape = input_data_as_numpy_array.reshape(1, -1)
-    predicted_class = forest.predict(input_data_reshape)
+    input_data_reshape = input_data_as_numpy_array.reshape(1,-1)
+    std_data = scaler.transform(input_data_reshape)
 
-    # Mengembalikan hasil prediksi
+    prediction =  forest.predict(std_data)
+
+    # ubah class hasil prediksi menjadi interger agar dapat dibaca oleh model
+    predicted_class = int(prediction[0])
+
     if predicted_class == 1:
         return 'Anda **tidak berisiko** untuk terkena preeklamsia'
     elif predicted_class == 2:
         return 'Anda memiliki **risiko sedang** untuk terkena preeklamsia'
     else:
         return 'Anda memiliki **risiko tinggi** untuk terkena preeklamsia'
-
 
 
 # Navigasi sidebar
