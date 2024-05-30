@@ -379,10 +379,10 @@ if tabs == 'Deteksi Dini':
         puskesmas = st.selectbox('Wilayah Puskesmas', daftar_puskesmas)
     
     with col1:
-        nomor_nik = st.number_input('Nomor Induk Keluarga', min_value=1111111111111111, max_value=9999999999999999, step=1.0, format="%.0f")
+        nomor_nik = st.number_input('Nomor Induk Keluarga', min_value=1111111111111111)
         
     with col2:
-        nomor_telp = st.number_input('Nomor Telepon', min_value=10000000000, max_value=99999999999, step=1, format="%d")
+        nomor_telp = st.number_input('Nomor Telepon', min_value=10000000000)
     
     #Kolom Data Ibu
     st.subheader('Data Pemeriksaan Ibu')
