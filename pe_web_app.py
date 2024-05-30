@@ -111,11 +111,11 @@ def preeklamsia_risk_level(input_data):
 
     # Mengembalikan hasil prediksi
     if predicted_class == 1:
-        return '<span style='color:green'>Anda <b>risiko rendah</b> untuk terkena preeklamsia</span>'
+        return "<span style='color:green'>Anda <b>risiko rendah</b> untuk terkena preeklamsia</span>"
     elif predicted_class == 2:
-        return '<span style='color:orange'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>'
+        return "<span style='color:orange'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>"
     else:
-        return '<span style='color:red'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>'
+        return "<span style='color:red'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>"
 
 
 
