@@ -436,7 +436,7 @@ if tabs == 'Deteksi Dini':
         else:
             risiko = preeklamsia_risk_level([tinggi_badan, berat_badan, tekanan_darah_sistolik, tekanan_darah_diastolik, usia, paritas, riwayat_hipertensi, riwayat_preeklamsia])
         
-    st.success(risiko)
+        st.success(risiko)
         
         if risiko == 'Anda **risiko rendah** untuk terkena preeklamsia':
             risiko_pe = "Rendah"
