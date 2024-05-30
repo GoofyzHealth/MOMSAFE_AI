@@ -111,11 +111,11 @@ def preeklamsia_risk_level(input_data):
 
     # Mengembalikan hasil prediksi
     if predicted_class == 1:
-        return 'Anda **risiko rendah** untuk terkena preeklamsia'
+        return '<span style='color:green'>Anda <b>risiko rendah</b> untuk terkena preeklamsia</span>'
     elif predicted_class == 2:
-        return 'Anda memiliki **risiko sedang** untuk terkena preeklamsia'
+        return '<span style='color:orange'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>'
     else:
-        return 'Anda memiliki **risiko tinggi** untuk terkena preeklamsia'
+        return '<span style='color:red'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>'
 
 
 
@@ -379,10 +379,10 @@ if tabs == 'Deteksi Dini':
         puskesmas = st.selectbox('Wilayah Puskesmas', daftar_puskesmas)
     
     with col1:
-        nomor_nik = st.number_input('Nomor Induk Keluarga', max_value=9999999999999999)
+        nomor_nik = st.text_input('Nomor Induk Keluarga', max_chars=16)
         
     with col2:
-        nomor_telp = st.number_input('Nomor Telepon', max_value=999999999999)
+        nomor_telp = st.text_input('Nomor Telepon', max_chars=12)
     
     #Kolom Data Ibu
     st.subheader('Data Pemeriksaan Ibu')
