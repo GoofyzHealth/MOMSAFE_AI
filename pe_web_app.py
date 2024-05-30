@@ -436,21 +436,7 @@ if tabs == 'Deteksi Dini':
         else:
             risiko = preeklamsia_risk_level([tinggi_badan, berat_badan, tekanan_darah_sistolik, tekanan_darah_diastolik, usia, paritas, riwayat_hipertensi, riwayat_preeklamsia])
 
-        # Define colors for different risk levels
-        color = {
-            'Anda **tidak berisiko** untuk terkena preeklamsia': 'green',
-            'Anda memiliki **risiko sedang** untuk terkena preeklamsia': 'orange',
-            'Anda memiliki **risiko tinggi** untuk terkena preeklamsia': 'red'
-        }
-
-        # Get color based on the risk level
-        color_code = color.get(risiko, 'black')
-
-        # Apply CSS styling for color
-        styled_risiko = f'<span style="color:{color_code}">{risiko}</span>'
-        
-        # Display the colored risk level
-        st.success(styled_risiko)
+        st.success(risiko)
 
         
         if risiko == 'Anda **risiko rendah** untuk terkena preeklamsia':
