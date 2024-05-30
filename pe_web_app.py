@@ -106,12 +106,12 @@ def preeklamsia_risk_level(input_data):
     # Ubah data yang diinput menjadi array
     input_data_as_numpy_array = np.array(input_data)
 
-    input_data_reshape = input_data_as_numpy_array.reshape(1,-1)
+    input_data_reshape = input_data_as_numpy_array.reshape(1, -1)
     std_data = scaler.transform(input_data_reshape)
 
-    prediction =  forest.predict(std_data)
+    prediction = forest.predict(std_data)
 
-    # ubah class hasil prediksi menjadi interger agar dapat dibaca oleh model
+    # Ubah class hasil prediksi menjadi integer agar dapat dibaca oleh model
     predicted_class = int(prediction[0])
 
     if predicted_class == 1:
