@@ -394,6 +394,14 @@ if tabs == 'Deteksi Dini':
         
     with col2:
         nomor_telp = st.text_input('Nomor Telepon', max_chars=12)
+
+    # Input validation for telephone number
+        try:
+            # Attempt to convert the input to an integer
+            nomor_telp = int(nomor_telp)
+        except ValueError:
+            # If conversion fails, display a warning message
+            st.warning("Nomor telepon harus berupa angka.")
     
     #Kolom Data Ibu
     st.subheader('Data Pemeriksaan Ibu')
