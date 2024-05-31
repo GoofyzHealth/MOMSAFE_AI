@@ -115,11 +115,11 @@ def preeklamsia_risk_level(input_data):
     predicted_class = int(prediction[0])
 
     if predicted_class == 1:
-        return 'Anda **tidak berisiko** untuk terkena preeklamsia'
+        return "<span style='color:green'>Anda <b>risiko rendah</b> untuk terkena preeklamsia</span>", "Rendah"
     elif predicted_class == 2:
-        return 'Anda memiliki **risiko sedang** untuk terkena preeklamsia'
+        return "<span style='color:orange'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>", "Sedang"
     else:
-        return 'Anda memiliki **risiko tinggi** untuk terkena preeklamsia'
+        return "<span style='color:red'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>", "Tinggi"
 
 
 # Navigasi sidebar
@@ -436,7 +436,7 @@ if tabs == 'Deteksi Dini':
         else:
             risiko = preeklamsia_risk_level([tinggi_badan, berat_badan, tekanan_darah_sistolik, tekanan_darah_diastolik, usia, paritas, riwayat_hipertensi, riwayat_preeklamsia])
 
-        st.success(risiko)
+        st.markdown(risiko, unsafe_allow_html=True)
 
         
         if risiko == 'Anda **risiko rendah** untuk terkena preeklamsia':
