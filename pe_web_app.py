@@ -175,7 +175,7 @@ st.sidebar.image(img_url, use_column_width=True)
 if tabs == 'Dashboard':
     
     # Judul Halaman
-    st.markdown('<h1 style="color:#E75480;">Dashboard Deteksi Dini Preeklamsia Daerah Jawa Tengah</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color:#E75480;">Dashboard Deteksi Dini Preeklamsia Kabupaten Jember, Jawa Timur</h1>', unsafe_allow_html=True)
     
     #def get_latest_year():
     def get_latest_year():
