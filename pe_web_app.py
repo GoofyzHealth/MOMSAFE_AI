@@ -443,8 +443,8 @@ if tabs == 'Deteksi Dini':
             max_prob = probabilities[max_prob_index]
             # Convert the probability to percentage
             prediction_percentage = f"Confidence: {max_prob * 100:.2f}%"
-            st.success(risiko)
-            st.info(prediction_percentage)
+        st.success(risiko)
+        st.info(prediction_percentage)
 
         
         if risiko == 'Anda **risiko rendah** untuk terkena preeklamsia':
