@@ -115,11 +115,11 @@ def preeklamsia_risk_level(input_data):
     predicted_class = int(prediction[0])
 
     if predicted_class == 1:
-        return 'Anda **tidak berisiko** untuk terkena preeklamsia'
+        return "<span style='color:green'>Anda memiliki <b>risiko rendah</b> untuk terkena preeklamsia</span>"
     elif predicted_class == 2:
-        return 'Anda memiliki **risiko sedang** untuk terkena preeklamsia'
+        return "<span style='color:orange'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>"
     else:
-        return 'Anda memiliki **risiko tinggi** untuk terkena preeklamsia'
+        return "<span style='color:red'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>"
 
 
 # Navigasi sidebar
@@ -435,17 +435,9 @@ if tabs == 'Deteksi Dini':
         if nama_ibu is None or nama_suami is None or alamat is None or nomor_nik is None or nomor_telp is None or tinggi_badan is None or berat_badan is None or tekanan_darah_sistolik is None or tekanan_darah_diastolik is None or usia is None or paritas is None or riwayat_hipertensi is None or riwayat_preeklamsia is None:
             st.warning("**Mohon lengkapi semua isian terlebih dahulu**")
         else:
-            risiko, probabilities = preeklamsia_risk_level([tinggi_badan, berat_badan, tekanan_darah_sistolik, tekanan_darah_diastolik, usia, paritas, riwayat_hipertensi, riwayat_preeklamsia])
-            # Get the index of the maximum probability
-            max_prob_index = np.argmax(probabilities)
-            # Get the corresponding probability
-            max_prob = probabilities[max_prob_index]
-            # Convert the probability to percentage
-            prediction_percentage = f"Confidence: {max_prob * 100:.2f}%"
+            risiko = preeklamsia_risk_level([tinggi_badan, berat_badan, tekanan_darah_sistolik, tekanan_darah_diastolik, usia, paritas, riwayat_hipertensi, riwayat_preeklamsia])
 
-        
         st.success(risiko)
-        st.info(prediction_percentage)
 
         
         if risiko == 'Anda **risiko rendah** untuk terkena preeklamsia':
