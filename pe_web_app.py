@@ -115,11 +115,16 @@ def preeklamsia_risk_level(input_data):
     predicted_class = int(prediction[0])
 
     if predicted_class == 1:
-        return "<span style='color:green'>Anda memiliki <b>risiko rendah</b> untuk terkena preeklamsia</span>"
+        risk_level = "<span style='color:green'>Anda memiliki <b>risiko rendah</b> untuk terkena preeklamsia</span>"
     elif predicted_class == 2:
-        return "<span style='color:orange'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>"
+        risk_level = "<span style='color:orange'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>"
     else:
-        return "<span style='color:red'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>"
+        risk_level = "<span style='color:red'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>"
+    
+    # Get the probabilities for each class
+    probabilities = forest.predict_proba(std_data)[0]
+
+    return risk_level, probabilities
 
 
 # Navigasi sidebar
@@ -561,8 +566,3 @@ if tabs == 'Database':
         st.error('Username atau password salah')
     elif st.session_state["authentication_status"] is None:
         st.warning('Silahkan masukan username dan password')
-        
-   
-
-    
-    
