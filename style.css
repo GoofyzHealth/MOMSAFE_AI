@@ -86,15 +86,5 @@
         font-weight: bold; /* Ketebalan font */
     }
 
-    .low-risk {
-        color: green;
-    }
-    
-    .medium-risk {
-        color: orange;
-    }
-    
-    .high-risk {
-        color: red;
-    }
+
     
