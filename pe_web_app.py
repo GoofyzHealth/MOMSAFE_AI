@@ -451,7 +451,7 @@ if tabs == 'Deteksi Dini':
             max_prob = probabilities[max_prob_index]
             # Convert the probability to percentage
             prediction_percentage = f"Confidence: {max_prob * 100:.2f}%"
-        st.success(risiko)
+        st.markdown(risiko, unsafe_allow_html=True)  # Render HTML directly
         st.info(prediction_percentage)
 
         
