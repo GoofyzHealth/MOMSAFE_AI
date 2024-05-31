@@ -127,8 +127,7 @@ def preeklamsia_risk_level(input_data):
     # Get the probabilities for each class
     probabilities = forest.predict_proba(std_data)[0]
 
-    # Display the risk level message with the appropriate style
-    st.markdown(f'<div class="{risk_class}">{risk_level}</div>', unsafe_allow_html=True)
+    
     return risk_level, risk_class, probabilities
 
 
