@@ -115,16 +115,25 @@ def preeklamsia_risk_level(input_data):
     predicted_class = int(prediction[0])
 
     if predicted_class == 1:
-        risk_level = "<span class='low-risk'>Anda memiliki <b>risiko rendah</b> untuk terkena preeklamsia</span>"
+        risk_level = "Anda memiliki <b>risiko rendah</b> untuk terkena preeklamsia"
+        risk_class = "low-risk"
     elif predicted_class == 2:
-        risk_level = "<span class='medium-risk'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>"
+        risk_level = "Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia"
+        risk_class = "medium-risk"
     else:
-        risk_level = "<span class='high-risk'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>"
+        risk_level = "Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia"
+        risk_class = "high-risk"
     
     # Get the probabilities for each class
     probabilities = forest.predict_proba(std_data)[0]
 
-    return risk_level, probabilities
+    # Display the risk level message with the appropriate style
+    st.markdown(f'<div class="{risk_class}">{risk_level}</div>', unsafe_allow_html=True)
+    return risk_level, risk_class, probabilities
+
+
+
+
 
 
 with st.sidebar:
@@ -436,7 +445,7 @@ if tabs == 'Deteksi Dini':
         if nama_ibu is None or nama_suami is None or alamat is None or nomor_nik is None or nomor_telp is None or tinggi_badan is None or berat_badan is None or tekanan_darah_sistolik is None or tekanan_darah_diastolik is None or usia is None or paritas is None or riwayat_hipertensi is None or riwayat_preeklamsia is None:
             st.warning("**Mohon lengkapi semua isian terlebih dahulu**")
         else:
-            risiko, probabilities = preeklamsia_risk_level([tinggi_badan, berat_badan, tekanan_darah_sistolik, tekanan_darah_diastolik, usia, paritas, riwayat_hipertensi, riwayat_preeklamsia])
+            risiko, risk_class,probabilities = preeklamsia_risk_level([tinggi_badan, berat_badan, tekanan_darah_sistolik, tekanan_darah_diastolik, usia, paritas, riwayat_hipertensi, riwayat_preeklamsia])
 
             # Get the index of the maximum probability
             max_prob_index = np.argmax(probabilities)
@@ -446,6 +455,7 @@ if tabs == 'Deteksi Dini':
             prediction_percentage = f"Confidence: {max_prob * 100:.2f}%"
         st.success(risiko)
         st.info(prediction_percentage)
+        
 
         
         if risiko == 'Anda **risiko rendah** untuk terkena preeklamsia':
