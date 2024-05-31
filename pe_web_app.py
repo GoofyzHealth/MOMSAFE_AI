@@ -167,7 +167,7 @@ st.sidebar.image(img_url, use_column_width=True)
 if tabs == 'Dashboard':
     
     # Judul Halaman
-    st.markdown('<h1 style="color:#E75480;">Dashboard Deteksi Dini Preeklamsia</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color:#E75480;">Dashboard Deteksi Dini Preeklamsia Daerah Jawa Tengah</h1>', unsafe_allow_html=True)
     
     #def get_latest_year():
     def get_latest_year():
@@ -428,15 +428,24 @@ if tabs == 'Deteksi Dini':
     
     # Kode untuk prediksi
     risiko = ''
+    prediction_percentage = ''
     
     # Membuat tombol untuk klasifikasi level risiko
     if st.button('**Klasifikasi Level Risiko** :heart:' ):
         if nama_ibu is None or nama_suami is None or alamat is None or nomor_nik is None or nomor_telp is None or tinggi_badan is None or berat_badan is None or tekanan_darah_sistolik is None or tekanan_darah_diastolik is None or usia is None or paritas is None or riwayat_hipertensi is None or riwayat_preeklamsia is None:
             st.warning("**Mohon lengkapi semua isian terlebih dahulu**")
         else:
-            risiko = preeklamsia_risk_level([tinggi_badan, berat_badan, tekanan_darah_sistolik, tekanan_darah_diastolik, usia, paritas, riwayat_hipertensi, riwayat_preeklamsia])
+            risiko, probabilities = preeklamsia_risk_level([tinggi_badan, berat_badan, tekanan_darah_sistolik, tekanan_darah_diastolik, usia, paritas, riwayat_hipertensi, riwayat_preeklamsia])
+            # Get the index of the maximum probability
+            max_prob_index = np.argmax(probabilities)
+            # Get the corresponding probability
+            max_prob = probabilities[max_prob_index]
+            # Convert the probability to percentage
+            prediction_percentage = f"Confidence: {max_prob * 100:.2f}%"
 
+        
         st.success(risiko)
+        st.info(prediction_percentage)
 
         
         if risiko == 'Anda **risiko rendah** untuk terkena preeklamsia':
