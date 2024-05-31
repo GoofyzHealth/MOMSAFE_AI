@@ -115,21 +115,17 @@ def preeklamsia_risk_level(input_data):
     predicted_class = int(prediction[0])
 
     if predicted_class == 1:
-        risk_level = "<span style='color:green'>Anda memiliki <b>risiko rendah</b> untuk terkena preeklamsia</span>"
+        risk_level = "<span class='low-risk'>Anda memiliki <b>risiko rendah</b> untuk terkena preeklamsia</span>"
     elif predicted_class == 2:
-        risk_level = "<span style='color:orange'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>"
+        risk_level = "<span class='medium-risk'>Anda memiliki <b>risiko sedang</b> untuk terkena preeklamsia</span>"
     else:
-        risk_level = "<span style='color:red'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>"
+        risk_level = "<span class='high-risk'>Anda memiliki <b>risiko tinggi</b> untuk terkena preeklamsia</span>"
     
     # Get the probabilities for each class
     probabilities = forest.predict_proba(std_data)[0]
 
     return risk_level, probabilities
 
-
-# Navigasi sidebar
-st.markdown('<style>' + open('style.css').read() + '<style>', 
-            unsafe_allow_html=True) 
 
 with st.sidebar:
     with st.sidebar:
